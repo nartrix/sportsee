@@ -1,0 +1,33 @@
+.navigation {
+    width: 117px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+    height: 90.3vh;
+    background-color: $color-primary;
+
+    .navigation-menu {
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 30px;
+
+        .navigation-link {
+            background-color: $color-third;
+            width: 64px;
+            height: 64px;
+            border-radius: 6px;
+        }
+    }
+
+    .copiryght {
+        width: 142px;
+        color: $color-third;
+        transform: rotate(-90deg);
+        font-size: 12px;
+    }
+
+}

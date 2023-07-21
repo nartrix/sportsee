@@ -1,3 +1,10 @@
 @import "./Utils/variables";
 
 @import "./Base/base";
+
+@import "../components/duration-chart/durationChart.scss";
+@import "../components/kpi-chart/kpiChart.scss";
+@import "../components/navbar/navbar.scss";
+@import "../components/navigation/navigation.scss";
+@import "../components/radar-chart/radarChart.scss";
+@import "../components/weight-chart/weightChart.scss";

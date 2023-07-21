@@ -1,10 +1,15 @@
-import './style/main.scss';
+import "./style/main.scss";
+import Navbar from "./components/navbar";
+import Navigation from "./components/navigation";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Sportsee</h1>
-    </div>
+    <>
+      <Navbar />
+      <main>
+        <Navigation />
+      </main>
+    </>
   );
 }
 
