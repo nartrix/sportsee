@@ -3,6 +3,7 @@ import Navbar from "./components/navbar";
 import Navigation from "./components/navigation";
 import WeightChart from "./components/weight-chart";
 import DurationChart from "./components/duration-chart";
+import RadarChart from "./components/radar-chart";
 
 function App() {
   return (
@@ -44,31 +45,45 @@ function App() {
             </p>
             <WeightChart />
           </div>
-
-          <div
-            className="duration-chart"
-            style={{
-              width: "258px",
-              height: "263px",
-              backgroundColor: "#FF0000",
-              boxShadow: "0px 2px 4px 0px rgba(0, 0, 0, 0.02)",
-              borderRadius: "5px",
-              overflow: "hidden",
-            }}
-          >
-            <p
+          <div className="card-chart" style={{ display: "flex", gap: "36px" }}>
+            <div
+              className="duration-chart"
               style={{
-                width: "147px",
-                color: "#FFF",
-                fontSize: "15px",
-                opacity: "0.5",
-                marginLeft: "29px",
-                marginTop: "24px",
+                width: "258px",
+                height: "263px",
+                backgroundColor: "#FF0000",
+                boxShadow: "0px 2px 4px 0px rgba(0, 0, 0, 0.02)",
+                borderRadius: "5px",
+                overflow: "hidden",
               }}
             >
-              Durée moyenne des sessions
-            </p>
-            <DurationChart />
+              <p
+                style={{
+                  width: "147px",
+                  color: "#FFF",
+                  fontSize: "15px",
+                  opacity: "0.5",
+                  marginLeft: "29px",
+                  marginTop: "24px",
+                }}
+              >
+                Durée moyenne des sessions
+              </p>
+              <DurationChart />
+            </div>
+            <div
+              className="radar-chart"
+              style={{
+                width: "258px",
+                height: "263px",
+                backgroundColor: "#282D30",
+                borderRadius: "5px",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <RadarChart />
+            </div>
           </div>
         </div>
       </main>
