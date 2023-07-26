@@ -2,6 +2,7 @@ import "./style/main.scss";
 import Navbar from "./components/navbar";
 import Navigation from "./components/navigation";
 import WeightChart from "./components/weight-chart";
+import DurationChart from "./components/duration-chart";
 
 function App() {
   return (
@@ -19,9 +20,13 @@ function App() {
             }}
           >
             Bonjour{" "}
-            <span style={{ color: "#E60000", fontSize: "48px" }}>nom</span>
+            <span
+              style={{ color: "#E60000", fontSize: "48px", fontWeight: "bold" }}
+            >
+              Thomas
+            </span>
           </div>
-          <p style={{ fontSize: "18px", marginBottom: "77px" }}>
+          <p style={{ fontSize: "18px", marginBottom: "47px" }}>
             Félicitation ! Vous avez explosé vos objectifs hier 👏
           </p>
           <div
@@ -30,12 +35,40 @@ function App() {
               width: "835px",
               height: "320px",
               backgroundColor: "#FBFBFB",
+              borderRadius: "5px",
+              marginBottom: "30px",
             }}
           >
             <p style={{ padding: "24px 0px 0 32px", fontSize: "18px" }}>
               Activité quotidienne
             </p>
             <WeightChart />
+          </div>
+
+          <div
+            className="duration-chart"
+            style={{
+              width: "258px",
+              height: "263px",
+              backgroundColor: "#FF0000",
+              boxShadow: "0px 2px 4px 0px rgba(0, 0, 0, 0.02)",
+              borderRadius: "5px",
+              overflow: "hidden",
+            }}
+          >
+            <p
+              style={{
+                width: "147px",
+                color: "#FFF",
+                fontSize: "15px",
+                opacity: "0.5",
+                marginLeft: "29px",
+                marginTop: "24px",
+              }}
+            >
+              Durée moyenne des sessions
+            </p>
+            <DurationChart />
           </div>
         </div>
       </main>
