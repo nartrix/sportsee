@@ -24,7 +24,6 @@ function Home() {
   const { userId } = useParams();
   useEffect(() => {
     const fetchData = async () => {
-      // Je récupère les données principales de l'utilisateur en utilisant Promise.all() pour exécuter plusieurs requêtes en parallèle
       const [mainResponse, activity, sessions, performance] = await Promise.all(
         [
           getMainData(userId),
@@ -34,7 +33,6 @@ function Home() {
         ]
       );
 
-      // Je mets à jour le state data avec les données récupérées
       setData({
         main: mainResponse.data,
         activity,
@@ -44,12 +42,14 @@ function Home() {
     };
     fetchData();
   }, []);
+
   const firstName = data.main ? data.main.getFirstName() : "";
   const userNutritionData = data.main ? data.main.getKeyData() : [];
   const todayScore = data.main ? data.main.getTodayScore() : 0;
   const userActivity = data.activity ? data.activity.getSessions() : [];
   const sessionLength = data.sessions ? data.sessions.getSessions() : [];
   const performanceDataAll = data.performance ? data.performance.getData() : [];
+
   return (
     <>
       <Navbar />
@@ -95,7 +95,7 @@ function Home() {
                 <p style={{ padding: "24px 0px 0 32px", fontSize: "18px" }}>
                   Activité quotidienne
                 </p>
-                <WeightChart sessions={userActivity} />
+                <WeightChart activitySessions={userActivity} />
               </div>
               <div
                 className="card-chart"
@@ -124,7 +124,7 @@ function Home() {
                   >
                     Durée moyenne des sessions
                   </p>
-                  <DurationChart />
+                  <DurationChart sessionLength={sessionLength} />
                 </div>
                 <div
                   className="radar-chart"
@@ -137,7 +137,7 @@ function Home() {
                     justifyContent: "center",
                   }}
                 >
-                  <RadarChart />
+                  <RadarChart performanceData={performanceDataAll} />
                 </div>
                 <div
                   className="Kpi-chart"
@@ -160,18 +160,6 @@ function Home() {
                     Score
                   </p>
                   <KpiChart score={todayScore} />
-                  <p
-                    style={{
-                      width: "95px",
-                      position: "absolute",
-                      top: "52%",
-                      left: "39%",
-                      color: "#74798C",
-                      fontSize: "16px",
-                    }}
-                  >
-                    de votre objectif
-                  </p>
                 </div>
               </div>
             </div>

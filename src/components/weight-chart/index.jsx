@@ -10,7 +10,7 @@ import {
 } from "recharts";
 import { monthTickFormatter } from "../../services/activityModel";
 
-function weightChart({ sessions }) {
+function weightChart({ activitySessions }) {
   const renderColorfulLegendText = (value) => {
     return <span style={{ color: "#74798C", fontSize: "14px" }}>{value}</span>;
   };
@@ -48,7 +48,7 @@ function weightChart({ sessions }) {
         <BarChart
           width={500}
           height={300}
-          data={sessions}
+          data={activitySessions}
           margin={{
             top: 5,
             right: 30,

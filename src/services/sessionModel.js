@@ -10,11 +10,8 @@ export default class SessionsModel {
 
 export const getWeekDays = (sessions) => {
   const formatedSessions = [];
-
-  // Je récupère les jours de la semaine en chiffres
   const daysValue = sessions.map((session) => session.day);
 
-  // Je crée un tableau avec les jours de la semaine convertis en lettres
   const weekDays = daysValue.map((element) => {
     if (element === 1) {
       return "L";
@@ -34,7 +31,6 @@ export const getWeekDays = (sessions) => {
     return element;
   });
 
-  // Je boucle sur les sessions pour ajouter la propriété day modifiée en jour de la semaine à mon tableau formatedSessions
   sessions.forEach((session, index) => {
     formatedSessions.push({
       ...session,

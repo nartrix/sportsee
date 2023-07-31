@@ -2,37 +2,46 @@ import {
   RadialBarChart,
   RadialBar,
   Legend,
-  PolarAngleAxis,
   ResponsiveContainer,
 } from "recharts";
 
-function kpiChart() {
+function kpiChart({ score }) {
+  const scoreAngle = parseInt(score * 360 + 90);
+  const scoreValue = parseInt(score * 100);
+
   const data = [
     {
-      name: "12%",
-      uv: 12,
-      pv: 2400,
-      fill: "#E60000",
+      score: scoreAngle,
+      fill: "#ff0000",
     },
   ];
 
-  const renderColorLegendText = (value) => {
-    return (
-      <span
+  return (
+    <>
+      <p
         style={{
           width: "95px",
-          color: "#282D30",
+          position: "absolute",
+          top: "35%",
+          left: "39%",
           fontSize: "26px",
           fontWeight: "bold",
         }}
       >
-        {value}
-      </span>
-    );
-  };
-
-  return (
-    <>
+        {scoreValue}%
+      </p>
+      <p
+        style={{
+          width: "95px",
+          position: "absolute",
+          top: "50%",
+          left: "39%",
+          color: "#74798C",
+          fontSize: "16px",
+        }}
+      >
+        de votre objectif
+      </p>
       <ResponsiveContainer width="100%" height="75%">
         <RadialBarChart
           cx="50%"
@@ -42,22 +51,10 @@ function kpiChart() {
           barSize={16}
           data={data}
           startAngle={190}
-          endAngle={-190}
+          endAngle={scoreAngle}
         >
-          <PolarAngleAxis
-            type="number"
-            domain={[0, 100]}
-            angleAxisId={0}
-            tick={false}
-          />
-          <RadialBar
-            dataKey="uv"
-            background
-            clockWise={true}
-            cornerRadius={30 / 2}
-          />
+          <RadialBar dataKey="score" cornerRadius={5} />
           <Legend
-            formatter={renderColorLegendText}
             iconSize={0}
             layout="vertical"
             verticalAlign="middle"

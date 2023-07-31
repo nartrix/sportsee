@@ -5,46 +5,34 @@ import {
   PolarAngleAxis,
   ResponsiveContainer,
 } from "recharts";
+import { getPerformanceDataValue } from "../../services/perfomanceModel";
 
-function radarChart() {
-  const data = [
-    {
-      subject: "Math",
-      A: 120,
-      B: 110,
-      fullMark: 150,
-    },
-    {
-      subject: "Chinese",
-      A: 98,
-      B: 130,
-      fullMark: 150,
-    },
-    {
-      subject: "English",
-      A: 86,
-      B: 130,
-      fullMark: 150,
-    },
-    {
-      subject: "Geography",
-      A: 99,
-      B: 100,
-      fullMark: 150,
-    },
-    {
-      subject: "Physics",
-      A: 85,
-      B: 90,
-      fullMark: 150,
-    },
-    {
-      subject: "History",
-      A: 65,
-      B: 85,
-      fullMark: 150,
-    },
-  ];
+function radarChart({ performanceData }) {
+  let data = [];
+  if (performanceData) {
+    data = getPerformanceDataValue(performanceData);
+  }
+
+  const getKind = (data) => {
+    let kind = data.kind;
+    //
+    switch (kind) {
+      case 1:
+        return "Intensité";
+      case 2:
+        return "Vitesse";
+      case 3:
+        return "Force";
+      case 4:
+        return "Endurance";
+      case 5:
+        return "Energie";
+      case 6:
+        return "Cardio";
+      default:
+        return "Valeur inconnue";
+    }
+  };
 
   return (
     <>
@@ -52,7 +40,7 @@ function radarChart() {
         <RadarChart cx="50%" cy="50%" outerRadius="70%" data={data}>
           <PolarGrid gridType="polygon" radialLines={false} />
           <PolarAngleAxis
-            dataKey="subject"
+            dataKey={getKind}
             axisLine={false}
             tickLine={false}
             stroke="#FFFFFF"

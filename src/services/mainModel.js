@@ -15,6 +15,10 @@ export default class MainDataModel {
     return this.todayScore;
   }
 
+  getScore() {
+    return this.score;
+  }
+
   getKeyData() {
     return this.keyData;
   }
