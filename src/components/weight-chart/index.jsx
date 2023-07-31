@@ -8,55 +8,34 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import { monthTickFormatter } from "../../services/activityModel";
 
-function weightChart() {
-  const data = [
-    {
-      name: "Page A",
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
-    },
-    {
-      name: "Page B",
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
-    },
-    {
-      name: "Page C",
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
-    },
-    {
-      name: "Page D",
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
-    },
-    {
-      name: "Page E",
-      uv: 1890,
-      pv: 4800,
-      amt: 2181,
-    },
-    {
-      name: "Page F",
-      uv: 2390,
-      pv: 3800,
-      amt: 2500,
-    },
-    {
-      name: "Page G",
-      uv: 3490,
-      pv: 4300,
-      amt: 2100,
-    },
-  ];
-
+function weightChart({ sessions }) {
   const renderColorfulLegendText = (value) => {
     return <span style={{ color: "#74798C", fontSize: "14px" }}>{value}</span>;
+  };
+
+  const CustomTooltip = ({ active, payload }) => {
+    if (active && payload) {
+      return (
+        <div
+          className="custom-tooltip"
+          style={{
+            backgroundColor: "#E60000",
+            color: "#FFFFFF",
+            fontSize: "7px",
+            width: "39px",
+            height: "63px",
+            textAlign: "center",
+          }}
+        >
+          <p className="label">{`${payload[0].value}kg`}</p>
+          <p className="desc">{`${payload[1].value}Kcal`}</p>
+        </div>
+      );
+    }
+
+    return null;
   };
 
   return (
@@ -69,31 +48,39 @@ function weightChart() {
         <BarChart
           width={500}
           height={300}
-          data={data}
+          data={sessions}
           margin={{
             top: 5,
             right: 30,
             left: 20,
             bottom: 5,
           }}
-          barGap={10}
         >
           <CartesianGrid vertical={false} strokeDasharray="3 3" />
-          <XAxis dataKey="name" tickLine={false} />
-          <YAxis
+          <XAxis
+            dataKey="day"
+            tickFormatter={monthTickFormatter}
             tickLine={false}
+            dy={10}
+          />
+          <YAxis
+            yAxisId="left"
+            orientation="left"
+            stroke="#8884d8"
+            hide={true}
+          />
+          <YAxis
+            yAxisId="right"
             orientation="right"
+            stroke="#9B9EAC"
+            domain={["dataMin - 1", "dataMax"]}
+            allowDecimals={false}
             axisLine={false}
-            tickMargin={40}
+            tickLine={false}
+            dx={15}
+            dy={-4}
           />
-          <Tooltip
-            contentStyle={{
-              backgroundColor: "#E60000",
-              color: "#FFFFFF",
-              fontSize: "7px",
-            }}
-            itemStyle={{ color: "#FFFFFF" }}
-          />
+          <Tooltip content={<CustomTooltip />} />
           <Legend
             formatter={renderColorfulLegendText}
             align="right"
@@ -101,17 +88,19 @@ function weightChart() {
             wrapperStyle={{ top: -42, right: 0 }}
           />
           <Bar
+            yAxisId="right"
             name="Poids (kg)"
             legendType="circle"
-            dataKey="pv"
+            dataKey="kilogram"
             fill="#282D30"
             barSize={10}
             radius={[5, 5, 0, 0]}
           />
           <Bar
+            yAxisId="left"
             name="Calories brûlées (kCal)"
             legendType="circle"
-            dataKey="uv"
+            dataKey="calories"
             fill="#E60000"
             barSize={10}
             radius={[5, 5, 0, 0]}
