@@ -63,7 +63,6 @@ function kpiChart() {
             verticalAlign="middle"
             stroke="#020203"
           />
-          <text>votre objectif</text>
         </RadialBarChart>
       </ResponsiveContainer>
     </>
