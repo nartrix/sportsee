@@ -1,11 +1,13 @@
+import NavigationBtn from "../navigation-btn";
+
 function navigation() {
+  let activities = ["zen", "swim", "bike", "weight"];
   return (
     <div className="navigation">
       <div className="navigation-menu">
-        <div className="navigation-link"></div>
-        <div className="navigation-link"></div>
-        <div className="navigation-link"></div>
-        <div className="navigation-link"></div>
+        {activities.map((activity, index) => {
+          return <NavigationBtn key={index} activity={activity} />;
+        })}
       </div>
       <div className="copiryght">Copiryght, SportSee 2020</div>
     </div>

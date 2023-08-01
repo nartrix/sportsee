@@ -12,7 +12,7 @@ import WeightChart from "../../components/weight-chart";
 import DurationChart from "../../components/duration-chart";
 import RadarChart from "../../components/radar-chart";
 import KpiChart from "../../components/kpi-chart";
-import DashboardCard from "../../components/dashboard-card";
+import DashboardCards from "../../components/dashboard-cards";
 
 function Home() {
   const [data, setData] = useState({
@@ -172,10 +172,7 @@ function Home() {
                 marginTop: "18px",
               }}
             >
-              <DashboardCard />
-              <DashboardCard />
-              <DashboardCard />
-              <DashboardCard />
+              <DashboardCards nutritionData={userNutritionData} />
             </div>
           </div>
         </div>
