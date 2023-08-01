@@ -1,7 +1,6 @@
 import Navbar from "../../components/navbar";
 import Navigation from "../../components/navigation";
 import { useNavigate } from "react-router-dom";
-import logo from "../../assets/user_btn.png";
 
 function Profile() {
   const navigate = useNavigate();

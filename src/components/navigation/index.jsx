@@ -1,7 +1,7 @@
 import NavigationBtn from "../navigation-btn";
 
 function navigation() {
-  let activities = ["zen", "swim", "bike", "weight"];
+  const activities = ["zen", "swim", "bike", "weight"];
   return (
     <div className="navigation">
       <div className="navigation-menu">

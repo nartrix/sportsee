@@ -4,6 +4,7 @@ import glucidImg from "../../assets/carbs-icon.png";
 import lipidImg from "../../assets/fat-icon.png";
 
 function dashboardCard({ type, amount }) {
+  // Create an object that contains the properties of each type of nutrition
   const TYPES = {
     calorieCount: {
       unit: "kCal",
@@ -27,6 +28,7 @@ function dashboardCard({ type, amount }) {
     },
   };
 
+  // Create a variable nutritionType which retrieves the properties of TYPES depending on the type of nutrition
   const nutritionType = TYPES[type];
 
   return (

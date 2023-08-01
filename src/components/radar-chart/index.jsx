@@ -15,7 +15,7 @@ function radarChart({ performanceData }) {
 
   const getKind = (data) => {
     let kind = data.kind;
-    //
+    //data recovery for translation
     switch (kind) {
       case 1:
         return "Intensité";

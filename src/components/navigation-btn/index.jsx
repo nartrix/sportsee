@@ -4,8 +4,8 @@ import bike from "../../assets/bike-icon.svg";
 import weight from "../../assets/weight-icon.svg";
 
 function NavigationBtn({ activity }) {
+  // displays the image according to the name corresponding to the activities array in navigation
   let activityIcon;
-  // Je crée une condition pour afficher l'icône correspondant à l'activité
   if (activity === "zen") {
     activityIcon = zen;
   } else if (activity === "swim") {
