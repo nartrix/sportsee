@@ -1,0 +1,21 @@
+nav {
+    display: flex;
+    align-items: center;
+    height: 91px;
+    background-color: $color-primary;
+    
+    .logo {
+        margin-left: 28px;
+    }
+
+    .navbar-menu {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+
+        .navbar-link {
+            font-size: 24px;
+            color: $color-third;
+        }
+    }
+}
