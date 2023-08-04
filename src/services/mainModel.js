@@ -4,6 +4,7 @@ export default class MainDataModel {
     this.userInfos = data.userInfos;
     this.firstName = this.userInfos.firstName;
     this.todayScore = data.todayScore;
+    this.score = data.score;
     this.keyData = data.keyData;
   }
 
@@ -12,6 +13,9 @@ export default class MainDataModel {
   }
 
   getTodayScore() {
+    if (!this.todayScore) {
+      return this.score;
+    }
     return this.todayScore;
   }
 
