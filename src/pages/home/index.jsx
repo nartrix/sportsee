@@ -41,7 +41,7 @@ function Home() {
       });
     };
     fetchData();
-  }, []);
+  }, [userId]);
 
   const firstName = data.main ? data.main.getFirstName() : "";
   const userNutritionData = data.main ? data.main.getKeyData() : [];

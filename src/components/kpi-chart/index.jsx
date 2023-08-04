@@ -2,16 +2,16 @@ import {
   RadialBarChart,
   RadialBar,
   Legend,
+  PolarAngleAxis,
   ResponsiveContainer,
 } from "recharts";
 
 function kpiChart({ score }) {
-  const scoreAngle = parseInt(score * 360 + 90);
   const scoreValue = parseInt(score * 100);
 
   const data = [
     {
-      score: scoreAngle,
+      score: scoreValue,
       fill: "#ff0000",
     },
   ];
@@ -51,8 +51,14 @@ function kpiChart({ score }) {
           barSize={16}
           data={data}
           startAngle={190}
-          endAngle={scoreAngle}
+          endAngle={-360}
         >
+          <PolarAngleAxis
+            type="number"
+            domain={[0, 100]}
+            angleAxisId={0}
+            tick={false}
+          />
           <RadialBar dataKey="score" cornerRadius={5} />
           <Legend
             iconSize={0}
